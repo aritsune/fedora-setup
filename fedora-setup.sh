@@ -8,6 +8,7 @@ fi
 
 echo "Enabling RPM Fusion..."
 dnf -y install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm || exit 1
+dnf -y group upgrade core
 
 lspci -v -m | grep VGA -A 7 | grep -e ^Vendor: | grep -q NVIDIA
 $NVIDIA=$?
